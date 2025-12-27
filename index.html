@@ -18,6 +18,8 @@
             color: #2c3e50;
             background: linear-gradient(135deg, #ffeef8 0%, #f8e8ff 50%, #e8f4ff 100%);
             min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
         .container {
@@ -26,10 +28,13 @@
             padding: 20px;
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             border-radius: 20px;
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
             margin-top: 40px;
             margin-bottom: 40px;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
         }
 
         .header {
@@ -149,17 +154,102 @@
 
         @media (max-width: 768px) {
             .container {
-                margin: 20px;
+                margin: 10px;
                 padding: 15px;
                 border-radius: 15px;
+                margin-top: 20px;
+                margin-bottom: 20px;
             }
 
             h1 {
-                font-size: 2rem;
+                font-size: 1.8rem;
             }
 
             h2 {
                 font-size: 1.3rem;
+                margin: 25px 0 12px 0;
+            }
+
+            h3 {
+                font-size: 1.1rem;
+                margin: 18px 0 8px 0;
+            }
+
+            .header {
+                margin-bottom: 30px;
+                padding-bottom: 20px;
+            }
+
+            .logo {
+                flex-direction: column;
+                text-align: center;
+                gap: 10px;
+            }
+
+            .heart-icon {
+                width: 35px;
+                height: 35px;
+                font-size: 18px;
+            }
+
+            .highlight-box,
+            .contact-info {
+                padding: 15px;
+                margin: 15px 0;
+            }
+
+            p {
+                font-size: 0.95rem;
+                margin-bottom: 12px;
+            }
+
+            ul {
+                margin: 12px 0;
+                padding-left: 25px;
+            }
+
+            li {
+                margin-bottom: 6px;
+                font-size: 0.95rem;
+            }
+
+            .back-btn {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                margin: 5px;
+                padding: 12px;
+                border-radius: 12px;
+            }
+
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            .subtitle {
+                font-size: 1rem;
+            }
+
+            .last-updated {
+                font-size: 0.85rem;
+            }
+
+            h2 {
+                font-size: 1.2rem;
+            }
+
+            h3 {
+                font-size: 1rem;
+            }
+
+            .heart-icon {
+                width: 30px;
+                height: 30px;
+                font-size: 16px;
             }
         }
     </style>
@@ -199,16 +289,16 @@
 
         <h3>Communication & Activity Data:</h3>
         <ul>
-            <li>One-to-one private messages between you and your partner only (encrypted)</li>
-            <li>Photos, videos, and media files shared in your private chat (encrypted)</li>
-            <li>Voice messages and private calls between you two (encrypted)</li>
-            <li>Online status and last seen information (visible only to your partner)</li>
+            <li>One-to-one private messages between you and your partner only</li>
+            <li>Photos and media files shared in your private chat</li>
+            <li>Online status and presence information (visible only to your partner)</li>
             <li>Message delivery and read status (private between you and your partner)</li>
-            <li>Login times and session data (for security purposes only)</li>
+            <li>Typing indicators (visible only to your partner)</li>
+            <li>Favorites and saved messages</li>
         </ul>
 
         <p><strong>Note:</strong> OnlyUs only supports one-to-one conversations. We never collect group chat data,
-            social media interactions, or any communication outside your private couple chat.</p>
+            social media interactions, or any communication outside your private couple chat. All messages are stored securely.</p>
 
         <h2>2. How We Use Your Information</h2>
         <p>We use your information exclusively to:</p>
@@ -227,35 +317,21 @@
             or facilitate any communication outside your one-to-one relationship.</p>
 
         <div class="highlight-box">
-            <h3>🔒 Zero-Knowledge Privacy</h3>
-            <p><strong>We operate on a zero-knowledge principle - we cannot and do not read, analyze, or access your
-                    one-to-one messages.</strong> Your private conversations are encrypted with keys that only exist on
-                your and your partner's devices. Even if compelled by law enforcement, we cannot provide message content
-                because we don't have access to it. OnlyUs staff cannot see your conversations, and no other users can
-                ever access your private chat room.</p>
+            <h3>🔒 Your Privacy is Protected</h3>
+            <p><strong>We respect your privacy and keep your conversations secure.</strong> Your messages are stored securely using Firebase with proper security rules. Only you and your partner can access your chat. We use industry-standard security measures to protect your data, and OnlyUs staff follow strict privacy policies. No other users can ever access your private chat.</p>
         </div>
 
-        <h2>3. Advanced Security & Data Protection</h2>
-        <p>OnlyUs employs enterprise-grade security measures to protect your intimate conversations:</p>
+        <h2>3. Security & Data Protection</h2>
+        <p>OnlyUs employs robust security measures to protect your conversations:</p>
         <ul>
-            <li><strong>End-to-End Encryption:</strong> All messages are encrypted before leaving your device</li>
-            <li><strong>Firebase Security Rules:</strong> Strict database access controls ensure only authorized users
-                can access data</li>
+            <li><strong>Firebase Security Rules:</strong> Strict database access controls ensure only authorized users can access data</li>
             <li><strong>SSL/TLS Encryption:</strong> All data transmission is encrypted in transit</li>
-            <li><strong>Regular Security Audits:</strong> Continuous monitoring and security assessments</li>
-            <li><strong>Two-Factor Authentication:</strong> Optional additional security layer for account protection
-            </li>
-            <li><strong>Secure File Storage:</strong> Media files are encrypted and stored with restricted access</li>
-            <li><strong>Session Management:</strong> Automatic logout and session timeout for inactive accounts</li>
-            <li><strong>Device Authentication:</strong> Each device is verified before accessing your account</li>
+            <li><strong>Secure Authentication:</strong> Firebase Authentication ensures secure account access</li>
+            <li><strong>Secure File Storage:</strong> Media files are stored securely with restricted access</li>
+            <li><strong>Session Management:</strong> Secure session handling for your account</li>
+            <li><strong>Device Security:</strong> Each device is authenticated before accessing your account</li>
+            <li><strong>Offline Support:</strong> Your data is cached securely on your device when offline</li>
         </ul>
-
-        <div class="highlight-box">
-            <h3>🛡️ Military-Grade Protection</h3>
-            <p><strong>Your conversations are protected with the same level of security used by banks and government
-                    institutions.</strong> Even OnlyUs staff cannot access your messages - they're encrypted with keys
-                only you and your partner possess.</p>
-        </div>
 
         <h2>4. Data Sharing & Third Parties</h2>
         <p><strong>We maintain a strict no-sharing policy for your one-to-one conversations.</strong> Your personal
@@ -280,30 +356,15 @@
         <p>You have complete control over your one-to-one chat experience:</p>
         <ul>
             <li>Access your personal data and chat history with your partner</li>
-            <li>Delete your account and all associated private conversation data</li>
             <li>Export your one-to-one chat history</li>
-            <li>Update your information anytime</li>
-            <li>Withdraw consent for data processing</li>
-            <li>Block or disconnect from your partner if needed</li>
+            <li>Update your profile information anytime</li>
             <li>Control your online status visibility to your partner</li>
+            <li>Manage notification preferences</li>
+            <li>Disconnect from your partner if needed</li>
+            <li>Customize privacy settings in the app</li>
         </ul>
 
-        <p><strong>Important:</strong> Since OnlyUs is designed for one-to-one communication, deleting your account will
-            also affect your partner's access to your shared conversation history.</p>
-
-        <h2>6. Data Retention</h2>
-        <p>We keep your one-to-one chat data as long as your account is active. When you delete your account:</p>
-        <ul>
-            <li>All private messages with your partner are permanently deleted within 30 days</li>
-            <li>Personal information is removed immediately</li>
-            <li>Your partner will be notified that the shared conversation history will be affected</li>
-            <li>Some technical logs may be retained for security purposes (max 90 days, no message content)</li>
-        </ul>
-
-        <p><strong>Note:</strong> Since OnlyUs facilitates one-to-one conversations, both partners share the same
-            conversation history. Account deletion affects the shared chat room for both users.</p>
-
-        <h2>7. Cookies & Analytics</h2>
+        <h2>6. Cookies & Analytics</h2>
         <p>OnlyUs uses minimal tracking:</p>
         <ul>
             <li>Essential cookies for app functionality</li>
@@ -311,17 +372,17 @@
             <li>No advertising or behavioral tracking</li>
         </ul>
 
-        <h2>8. Age Requirement & Privacy</h2>
+        <h2>7. Age Requirement & Privacy</h2>
         <p><strong>OnlyUs is exclusively for users 18 years and older.</strong> We implement strict age verification and
             don't knowingly collect information from anyone under 18. Users must confirm their age during registration.
             If you're a parent and believe someone under 18 has created an account, please contact us immediately for
             account removal.</p>
 
-        <h2>9. International Users</h2>
+        <h2>8. International Users</h2>
         <p>OnlyUs is available globally. Your data may be stored in servers located in different countries, but always
             with the same high level of protection regardless of location.</p>
 
-        <h2>10. Changes to This Policy</h2>
+        <h2>9. Changes to This Policy</h2>
         <p>We may update this policy occasionally. When we do:</p>
         <ul>
             <li>You'll be notified in the app</li>
@@ -344,5 +405,6 @@
         </div>
     </div>
 </body>
+
 
 </html>
